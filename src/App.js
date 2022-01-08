@@ -1,12 +1,25 @@
 import React from "react";
-import SendData from "./components/SendData";
-
+// import SendData from "./components/SendData";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Cart from "./pages/Cart";
+import Home from "./pages/Home";
+import "./styles/App.scss";
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
-      <SendData />
-    </div>
+    <Router>
+      <div className="app_container">
+        <Navbar />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/cart" exact>
+            <Cart />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
