@@ -6,7 +6,8 @@ import "../styles/Home.scss";
 const Home = () => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.productReducer.products);
-  // console.log(getProducts);
+  const x = [];
+  console.log(getProducts);
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -15,7 +16,7 @@ const Home = () => {
       <h1>Header</h1>
       <h3>Gaming</h3>
       <div className="single_products_container">
-        {getProducts.length > 0 ? (
+        {getProducts.length > 0 || getProducts !== "no Product" ? (
           getProducts
             .filter((item) => item.category === "gaming")
             .map((el) => <SingleProduct key={el._id} el={el} />)

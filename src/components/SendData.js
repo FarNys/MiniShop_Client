@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-
+import { useDispatch } from "react-redux";
+import { sendData } from "../actions/ProductAction";
 const SendData = (e) => {
+  const dispatch = useDispatch();
   const [data, setdata] = useState({
     name: "",
     description: "",
@@ -9,23 +11,38 @@ const SendData = (e) => {
     price: "",
     featuresArr: [],
   });
-  const [features, setfeatures] = useState({});
   const changeHandler = (e) => {
     setdata({ ...data, [e.target.name]: e.target.value });
     console.log(data);
   };
-  const changeFeatures = (e) => {
-    setfeatures({ ...features, [e.target.name]: e.target.value });
-    console.log(features);
-  };
+
   const sendHandler = (e) => {
     e.preventDefault();
-    data.featuresArr = [];
-    for (let i in features) {
-      data.featuresArr.push(features[i]);
-    }
     console.log(data);
+    dispatch(sendData(data));
+    setdata({
+      name: "",
+      description: "",
+      image: "",
+      category: "",
+      price: "",
+      featuresArr: [],
+    });
   };
+  const addField = (e) => {
+    e.preventDefault();
+    setdata({
+      ...data,
+      featuresArr: [...data.featuresArr, { title: "", text: "" }],
+    });
+  };
+  const changeFieldHandler = (e, id) => {
+    console.log(e.target.value, id);
+    const list = [...data.featuresArr];
+    list[id] = e.target.value;
+    setdata({ ...data, featuresArr: [...list] });
+  };
+
   return (
     <div>
       <form
@@ -35,7 +52,7 @@ const SendData = (e) => {
           type="text"
           name="name"
           onChange={changeHandler}
-          //   value={data.name}
+          value={data.name}
         />
         <label htmlFor="name">Name</label>
         <input type="text" name="description" onChange={changeHandler} />
@@ -46,14 +63,32 @@ const SendData = (e) => {
         <label htmlFor="category">category</label>
         <input type="number" name="price" onChange={changeHandler} />
         <label htmlFor="price">price</label>
-        <input type="text" name="feature1" onChange={changeFeatures} />
-        <label htmlFor="feature1">feature1</label>
-        <input type="text" name="feature2" onChange={changeFeatures} />
-        <label htmlFor="feature2">feature2</label>
-        <input type="text" name="feature3" onChange={changeFeatures} />
-        <label htmlFor="feature3">feature3</label>
-        <input type="text" name="feature4" onChange={changeFeatures} />
-        <label htmlFor="feature4">feature4</label>
+        {data.featuresArr.length > 0 &&
+          data.featuresArr.map((el, id) => (
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                width: "320px",
+              }}
+              key={id}
+            >
+              <label htmlFor="title">title</label>{" "}
+              <input
+                type="text"
+                name="title"
+                onChange={(e) => changeFieldHandler(e, id)}
+              />{" "}
+              {/* <label htmlFor="text">text</label>{" "}
+              <input
+                type="text"
+                name="text"
+                onChange={(e) => changeFieldHandler(e, id)}
+              />{" "} */}
+            </div>
+          ))}
+
+        <button onClick={addField}>Add</button>
         <button type="submit" onClick={sendHandler}>
           Send Data
         </button>
