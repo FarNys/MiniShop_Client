@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import SendData from "./components/SendData";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
+import DynamicProduct from "./pages/DynamicProduct";
 import "./styles/App.scss";
 const App = () => {
   return (
@@ -20,6 +21,9 @@ const App = () => {
           </Route>
           <Route path="/create" exact>
             <SendData />
+          </Route>
+          <Route path="/product/:id" exact>
+            <DynamicProduct />
           </Route>
         </Switch>
       </div>

@@ -4,10 +4,15 @@ import App from "./App";
 import "./Index.scss";
 import productReducer from "./reducers/productReducer";
 import cartReducer from "./reducers/cartReducer";
+import singleProductReducer from "./reducers/singleProductReducer";
 import thunk from "redux-thunk";
 import { Provider } from "react-redux";
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
-const allReducers = combineReducers({ productReducer, cartReducer });
+const allReducers = combineReducers({
+  productReducer,
+  cartReducer,
+  singleProductReducer,
+});
 const store = createStore(allReducers, compose(applyMiddleware(thunk)));
 
 ReactDOM.render(

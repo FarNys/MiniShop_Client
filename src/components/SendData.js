@@ -7,7 +7,7 @@ const SendData = (e) => {
     name: "",
     description: "",
     image: "",
-    category: "",
+    category: "gaming",
     price: "",
     featuresArr: [],
   });
@@ -24,7 +24,7 @@ const SendData = (e) => {
       name: "",
       description: "",
       image: "",
-      category: "",
+      category: "gaming",
       price: "",
       featuresArr: [],
     });
@@ -42,27 +42,46 @@ const SendData = (e) => {
     list[id] = e.target.value;
     setdata({ ...data, featuresArr: [...list] });
   };
-
   return (
     <div>
       <form
         style={{ display: "flex", flexDirection: "column", width: "320px" }}
       >
+        <label htmlFor="name">Name</label>
+
         <input
           type="text"
           name="name"
           onChange={changeHandler}
           value={data.name}
         />
-        <label htmlFor="name">Name</label>
-        <input type="text" name="description" onChange={changeHandler} />
         <label htmlFor="description">description</label>
-        <input type="text" name="image" onChange={changeHandler} />
+
+        <input
+          type="text"
+          name="description"
+          onChange={changeHandler}
+          value={data.description}
+        />
         <label htmlFor="image">image</label>
-        <input type="text" name="category" onChange={changeHandler} />
+
+        <input
+          type="text"
+          name="image"
+          onChange={changeHandler}
+          value={data.image}
+        />
         <label htmlFor="category">category</label>
-        <input type="number" name="price" onChange={changeHandler} />
+        <select name="category" id="category" onChange={changeHandler}>
+          {" "}
+          <option value="gaming">gaming</option>
+          <option value="laptops">laptops</option>
+          <option value="camera">camera</option>
+        </select>
+        {/* <input type="text" name="category" onChange={changeHandler} /> */}
         <label htmlFor="price">price</label>
+
+        <input type="number" name="price" onChange={changeHandler} />
         {data.featuresArr.length > 0 &&
           data.featuresArr.map((el, id) => (
             <div
@@ -79,12 +98,6 @@ const SendData = (e) => {
                 name="title"
                 onChange={(e) => changeFieldHandler(e, id)}
               />{" "}
-              {/* <label htmlFor="text">text</label>{" "}
-              <input
-                type="text"
-                name="text"
-                onChange={(e) => changeFieldHandler(e, id)}
-              />{" "} */}
             </div>
           ))}
 
