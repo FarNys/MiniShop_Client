@@ -7,11 +7,31 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
+      <li className="allcategories_navbar">
+        All Category
+        <ul>
+          <li>
+            {" "}
+            <Link to="/allCategories/gaming">Gaming</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/allCategories/laptops">Laptops</Link>
+          </li>
+          <li>
+            {" "}
+            <Link to="/allCategories/camera">Camera</Link>
+          </li>
+        </ul>
+      </li>
       <li>
         <Link to="/cart">Cart</Link>
       </li>
       <li>
         <Link to="/create">Create</Link>
+      </li>
+      <li>
+        <Link to="/products/edit">All Products</Link>
       </li>
     </div>
   );

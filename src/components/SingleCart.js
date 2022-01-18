@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { counterHandler, deleteFromCart } from "../actions/ProductAction";
+import { counterHandler, deleteFromCart } from "../actions/CartAction";
 import { useDispatch, useSelector } from "react-redux";
 const SingleCart = ({ el }) => {
   const dispatch = useDispatch();

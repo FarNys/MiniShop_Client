@@ -8,12 +8,14 @@
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
   display: flex;
   justify-content: center;
-  align-items: center;
+  // align-items: center;
+  padding-top: 1rem;
   li {
     list-style: none;
     margin-right: 1rem;
     display: flex;
-    align-items: center;
+    // align-items: center;
+
     &:hover {
       background-color: white;
       a {
@@ -24,6 +26,39 @@
       text-decoration: none;
       color: white;
       padding: 0 0.7rem;
+    }
+  }
+}
+.allcategories_navbar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  align-self: flex-start;
+  &:hover {
+    ul {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      transition: 0.3s ease transform;
+      visibility: visible;
+    }
+  }
+  ul {
+    position: absolute;
+    border: 2px solid green;
+    background-color: bisque;
+    min-width: 100%;
+    // display: none;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(5px);
+    z-index: 10;
+    top: 100%;
+    transition: 0.3s ease all;
+
+    li {
+      width: 100%;
     }
   }
 }

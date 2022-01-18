@@ -11,14 +11,15 @@ const SendData = (e) => {
     price: "",
     featuresArr: [],
   });
+  //CONTROL ALL INPUT ON CHANGE
   const changeHandler = (e) => {
     setdata({ ...data, [e.target.name]: e.target.value });
-    console.log(data);
+    // console.log(data);
   };
-
+  //SEND DATA TO BACKEND
   const sendHandler = (e) => {
     e.preventDefault();
-    console.log(data);
+    // console.log(data);
     dispatch(sendData(data));
     setdata({
       name: "",
@@ -29,6 +30,7 @@ const SendData = (e) => {
       featuresArr: [],
     });
   };
+  //ADD EXTRA FIELD TO ADD MORE FEATURES
   const addField = (e) => {
     e.preventDefault();
     setdata({
@@ -36,6 +38,7 @@ const SendData = (e) => {
       featuresArr: [...data.featuresArr, { title: "", text: "" }],
     });
   };
+  //CONTROL OF EXTRA FIELD ADDED
   const changeFieldHandler = (e, id) => {
     console.log(e.target.value, id);
     const list = [...data.featuresArr];

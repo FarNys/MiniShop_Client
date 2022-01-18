@@ -7,12 +7,12 @@ import { compose } from "redux";
 const Home = () => {
   const dispatch = useDispatch();
   const getProducts = useSelector((state) => state.productReducer.products);
-  const comps = [];
-  let z = 5;
-  for (let i = 0; i < z; i++) {
-    comps.push(<li key={i}>{i}</li>);
-  }
-  console.log(getProducts);
+  // const comps = [];
+  // let z = 5;
+  // for (let i = 0; i < z; i++) {
+  //   comps.push(<li key={i}>{i}</li>);
+  // }
+  // console.log(getProducts);
   useEffect(() => {
     dispatch(getAllProducts());
   }, [dispatch]);
@@ -43,7 +43,7 @@ const Home = () => {
           )}
         </div>
       </div>
-      {comps}
+      {/* {comps} */}
     </div>
   );
 };

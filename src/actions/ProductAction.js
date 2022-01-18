@@ -1,7 +1,10 @@
+import { baseURL } from "../App";
+//GET ALL PRODUCT FROM DB
 export const getAllProducts = () => async (dispatch) => {
   try {
-    const res = await fetch("http://localhost:5000/products");
+    const res = await fetch(`${baseURL}/products`);
     const data = await res.json();
+    // console.log(data);
     dispatch({ type: "GET_ALL_PRODUCTS", payload: data });
   } catch (error) {
     console.log(error);
@@ -10,9 +13,10 @@ export const getAllProducts = () => async (dispatch) => {
 export const addTomyCart = (item) => {
   return { type: "ADD_TO_CART", payload: item };
 };
+//ADD PRODUCT TO DATABASE
 export const sendData = (item) => async (dispatch) => {
   try {
-    const result = await fetch("http://localhost:5000/products", {
+    const result = await fetch(`${baseURL}/products`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,16 +39,11 @@ export const sendData = (item) => async (dispatch) => {
     console.log(error);
   }
 };
-export const counterHandler = (item, count) => {
-  return { type: "CHANGE_COUNT", payload: item, count: count };
-};
-export const deleteFromCart = (id) => {
-  return { type: "DELETE_FROM_CART", payload: id };
-};
-//NOT DEFINED YET!
+
+//DELETE ONE PRODUCT FROM SHOP
 export const deleteProduct = (id) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:5000/products/${id}`, {
+    const res = await fetch(`${baseURL}/products/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -52,14 +51,15 @@ export const deleteProduct = (id) => async (dispatch) => {
     });
     const data = await res.json();
     dispatch({ type: "DELETE_PRODUCT", payload: id });
-    console.log(data);
+    // console.log(data);
   } catch (error) {
     console.log(error);
   }
 };
+//GET SINGLE PRODUCT FOR DYNAMIC PAGE
 export const getSingleProduct = (id) => async (dispatch) => {
   try {
-    const res = await fetch(`http://localhost:5000/products/${id}`);
+    const res = await fetch(`${baseURL}/products/${id}`);
     const data = await res.json();
     console.log(data);
     dispatch({ type: "GET_SINGLE_PRODUCT", payload: data });
