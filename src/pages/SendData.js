@@ -25,7 +25,7 @@ const SendData = (e) => {
       name: "",
       description: "",
       image: "",
-      category: "gaming",
+      category: "",
       price: "",
       featuresArr: [],
     });
