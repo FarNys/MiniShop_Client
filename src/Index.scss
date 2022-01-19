@@ -3,3 +3,30 @@
   margin: 0;
   box-sizing: border-box;
 }
+$font_main: "Poppins", sans-serif;
+$font_text: "Quattrocento Sans", sans-serif;
+
+$colorsLight: (
+  color_1: #fff,
+  color_2: #232526,
+  color_3: #00a1ff,
+  color_4: #514a9d,
+);
+$color_1: #fff;
+$color_2: #232526;
+$color_3: #00a1ff;
+$color_4: #514a9d;
+@mixin bgColorActive($color: $color_1) {
+  background-color: $color;
+  opacity: 0.88;
+  transform: scale(0.98);
+}
+@mixin bgColorHover($color: $color_1) {
+  opacity: 0.93;
+  background-color: $color;
+}
+:root {
+  @each $var, $value in $colorsLight {
+    --#{$var}: #{$value};
+  }
+}

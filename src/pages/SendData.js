@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { sendData } from "../actions/ProductAction";
+import Title from "../components/Title";
+import "../styles/SendData.scss";
 const SendData = (e) => {
   const dispatch = useDispatch();
   const [data, setdata] = useState({
@@ -46,12 +48,10 @@ const SendData = (e) => {
     setdata({ ...data, featuresArr: [...list] });
   };
   return (
-    <div>
-      <form
-        style={{ display: "flex", flexDirection: "column", width: "320px" }}
-      >
+    <div className="sendData_container">
+      <form className="form_container">
+        <Title title="Create Product" />
         <label htmlFor="name">Name</label>
-
         <input
           type="text"
           name="name"
@@ -77,9 +77,11 @@ const SendData = (e) => {
         <label htmlFor="category">category</label>
         <select name="category" id="category" onChange={changeHandler}>
           {" "}
-          <option value="gaming">gaming</option>
-          <option value="laptops">laptops</option>
-          <option value="camera">camera</option>
+          <option className="option_class" value="gaming">
+            Gaming
+          </option>
+          <option value="laptops">Laptops</option>
+          <option value="camera">Camera</option>
         </select>
         {/* <input type="text" name="category" onChange={changeHandler} /> */}
         <label htmlFor="price">price</label>
@@ -87,14 +89,7 @@ const SendData = (e) => {
         <input type="number" name="price" onChange={changeHandler} />
         {data.featuresArr.length > 0 &&
           data.featuresArr.map((el, id) => (
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "320px",
-              }}
-              key={id}
-            >
+            <div className="add_field_container" key={id}>
               <label htmlFor="title">title</label>{" "}
               <input
                 type="text"
@@ -104,8 +99,14 @@ const SendData = (e) => {
             </div>
           ))}
 
-        <button onClick={addField}>Add</button>
-        <button type="submit" onClick={sendHandler}>
+        <button className="sendData_add_btn" onClick={addField}>
+          Add
+        </button>
+        <button
+          className="sendData_add_btn"
+          type="submit"
+          onClick={sendHandler}
+        >
           Send Data
         </button>
       </form>

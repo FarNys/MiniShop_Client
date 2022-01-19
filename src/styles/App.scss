@@ -1,6 +1,7 @@
+@import "../Index.scss";
 .app_container {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background-color: #d5d5d5;
+  background-color: $font_main;
 }
