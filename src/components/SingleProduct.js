@@ -3,6 +3,7 @@ import "../styles/SingleProduct.scss";
 import { useDispatch } from "react-redux";
 import { addTomyCart } from "../actions/ProductAction";
 import { Link } from "react-router-dom";
+import { BsFillCartPlusFill } from "react-icons/bs";
 
 const SingleProduct = ({ el }) => {
   const dispatch = useDispatch();
@@ -12,6 +13,7 @@ const SingleProduct = ({ el }) => {
   const checkBtn = (e) => {
     if (e.target.getAttribute("data-name") === "btn") {
       e.preventDefault();
+      console.log("Dont Go");
     } else {
       console.log("Go");
     }
@@ -27,11 +29,11 @@ const SingleProduct = ({ el }) => {
       </div>
       <div className="single_product_info">
         <li>{el.name}</li>
-        <li>{el.price}$</li>
       </div>
-      <div className="single_product_btn">
+      <div className="single_product_btn_price">
+        <li>${el.price}</li>
         <button data-name="btn" onClick={addToCart}>
-          Add
+          <BsFillCartPlusFill className="add_cart_product_icon" />
         </button>
       </div>
     </Link>

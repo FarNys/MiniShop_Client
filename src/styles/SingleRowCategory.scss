@@ -1,0 +1,45 @@
+@import "../Index.scss";
+.single_products_container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 1000px;
+  width: 95%;
+  margin: 3rem auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+.category_box {
+  position: relative;
+}
+.show_all_link {
+  display: flex;
+  align-items: center;
+  font-family: $font_text;
+  position: absolute;
+  color: var(--color_3);
+  bottom: 0;
+  right: 30px;
+  &:hover {
+    .icon_plus {
+      transform: translateX(5px);
+      transition: 0.15s ease transform;
+    }
+  }
+  .icon_plus {
+    position: relative;
+    right: -5px;
+    transition: 0.15s ease transform;
+  }
+}
+@media (max-width: 900px) {
+  .single_products_container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+  }
+}
+@media (max-width: 500px) {
+  .single_products_container {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 3rem;
+  }
+}

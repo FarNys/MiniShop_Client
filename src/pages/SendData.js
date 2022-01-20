@@ -107,7 +107,7 @@ const SendData = (e) => {
           type="submit"
           onClick={sendHandler}
         >
-          Send Data
+          Create
         </button>
       </form>
     </div>
