@@ -1,5 +1,5 @@
 const initialState = {
-  product: {},
+  product: null,
 };
 const singleProductReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-size: 1em;
 }
 $font_main: "Poppins", sans-serif;
 $font_text: "Quattrocento Sans", sans-serif;
@@ -11,6 +12,7 @@ $colorsLight: (
   color_2: #232526,
   color_3: #00a1ff,
   color_4: #514a9d,
+  color_5: #fa4545,
 );
 $color_1: #fff;
 $color_2: #232526;
@@ -28,5 +30,15 @@ $color_4: #514a9d;
 :root {
   @each $var, $value in $colorsLight {
     --#{$var}: #{$value};
+  }
+}
+@media (max-width: 850px) {
+  * {
+    font-size: 0.99em !important;
+  }
+}
+@media (max-width: 600px) {
+  * {
+    font-size: 0.98em !important;
   }
 }

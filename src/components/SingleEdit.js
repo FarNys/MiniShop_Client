@@ -19,12 +19,14 @@ const SingleEdit = ({ el, index }) => {
       <td>{el.name}</td>
       <td>{el.category}</td>
       <td>${el.price}</td>
-      <td>{el._id}</td>
-      <td>{new Date(el.mytimestamp).toLocaleString()}</td>
-      <td>
+      <td className="table_id_th">{el._id}</td>
+      <td className="table_id_createdAt">
+        {new Date(el.mytimestamp).toLocaleString()}
+      </td>
+      <td className="table_edit_item">
         <AiFillEdit onClick={editHandler} />
       </td>
-      <td>
+      <td className="table_delete_item">
         <AiFillDelete onClick={() => deleteHandler()} />
       </td>
     </tr>

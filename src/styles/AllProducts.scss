@@ -1,0 +1,125 @@
+@import "../Index.scss";
+.allproducts_container {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.select_category_container {
+  margin-top: 30px;
+  .select_category_box {
+    // outline: none;
+    background-color: var(--color_3);
+  }
+}
+.select_category_menuItem {
+  color: var(--color_2);
+  font-family: $font_text !important;
+  font-size: 1rem !important;
+}
+.select_label {
+  color: var(--color_2);
+  font-size: 1rem !important;
+  // transform: translateY(-20px) !important;
+}
+.table_table {
+  border-spacing: 0;
+  margin-top: 70px;
+  max-width: 900px;
+  width: 95%;
+}
+.table_thead_row {
+}
+.table_header_row {
+  > th {
+    font-size: 0.95rem;
+    font-family: $font_main;
+    padding: 0.5rem 0.2rem;
+    border-bottom: 2px solid var(--color_3);
+  }
+}
+.table_body_row_container {
+  font-size: 0.9rem;
+
+  > tr {
+    font-family: $font_text;
+    text-align: center;
+    transform: translateY(10px);
+
+    &:nth-child(even) {
+      color: var(--color_3);
+      &:hover {
+        background-color: var(--color_3);
+        color: var(--color_1);
+        .table_edit_item {
+          border-right: 1px dashed var(--color_2);
+          border-left: 1px dashed var(--color_2);
+        }
+      }
+    }
+    &:nth-child(odd) {
+      color: var(--color_2);
+      &:hover {
+        background-color: var(--color_2);
+        color: var(--color_1);
+        .table_edit_item {
+          border-right: 1px dashed var(--color_3);
+          border-left: 1px dashed var(--color_3);
+        }
+      }
+    }
+    td {
+      padding: 0.5rem 0;
+      border-bottom: 1px dashed var(--color_3);
+      border-spacing: 0;
+    }
+  }
+}
+.table_edit_item {
+  color: var(--color_4);
+  cursor: pointer;
+}
+.table_delete_item {
+  color: var(--color_5);
+  cursor: pointer;
+}
+.table_page_container {
+  margin-top: 50px;
+  max-width: 900px;
+  width: 95%;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+  > ul {
+    > li {
+      list-style: none;
+      font-family: $font_text;
+    }
+  }
+
+  .table_btn {
+    background-color: transparent;
+    border: none;
+    color: var(--color_3);
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  .table_btn_prev {
+    margin-right: 10px;
+  }
+  .table_btn_next {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 850px) {
+  .table_id_th {
+    display: none;
+  }
+}
+@media (max-width: 670px) {
+  .table_id_createdAt {
+    display: none;
+  }
+}
