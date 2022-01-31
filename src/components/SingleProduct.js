@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { addTomyCart } from "../actions/ProductAction";
 import { Link } from "react-router-dom";
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const SingleProduct = ({ el }) => {
   const dispatch = useDispatch();
@@ -25,7 +26,7 @@ const SingleProduct = ({ el }) => {
       onClick={checkBtn}
     >
       <div className="single_product_image_box">
-        <img src={el.image} alt={el.name} />
+        <LazyLoadImage src={el.image} alt={el.name} />
       </div>
       <div className="single_product_info">
         <li>{el.name}</li>
@@ -33,6 +34,7 @@ const SingleProduct = ({ el }) => {
       <div className="single_product_btn_price">
         <li>${el.price}</li>
         <button data-name="btn" onClick={addToCart}>
+          <span>Add To Cart</span>
           <BsFillCartPlusFill className="add_cart_product_icon" />
         </button>
       </div>

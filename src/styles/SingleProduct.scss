@@ -59,14 +59,30 @@ a {
     font-size: 1rem;
   }
   > button {
+    display: flex;
+    align-items: center;
     background-color: transparent;
     border: none;
-    font-size: 1.3rem;
-    padding: 0.3rem;
-    color: var(--color_3);
+    // font-size: 1.1rem;
+    padding: 0.5rem;
+    background-color: var(--color_3);
+    // border: 1px solid red;
+    color: var(--color_1);
+    margin-bottom: 5px;
     cursor: pointer;
+    > span {
+      margin-right: 5px;
+      font-size: 0.9rem !important;
+      pointer-events: none;
+    }
     .add_cart_product_icon {
       pointer-events: none;
+    }
+    &:hover {
+      @include bgColorHover($color_3);
+    }
+    &:active {
+      @include bgColorActive($color_3);
     }
   }
 }
