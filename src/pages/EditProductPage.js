@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import "../styles/EditProductPage.scss";
-import { editAction } from "../actions/ProductAction";
+// import { editAction } from "../actions/ProductAction";
 const EditProductPage = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const selectProduct = useSelector(
     (state) => state.singleProductReducer.product
   );
@@ -12,54 +15,41 @@ const EditProductPage = () => {
 
   const editChangeHandler = (e) => {
     seteditProduct({ ...editProduct, [e.target.name]: e.target.value });
+    console.log(editProduct);
   };
-  console.log(editProduct);
-  console.log(selectProduct);
 
   const { id } = useParams();
   useEffect(() => {
-    dispatch(editAction(id));
+    // dispatch(editAction(id));
+    seteditProduct(location.state);
   }, [dispatch, id]);
   return (
     <div className="edit_page_container">
-      <h1>Edit: {id}</h1>
-      {selectProduct._id !== "" && (
-        <input
-          type="text"
-          value={editProduct.name}
-          onChange={editChangeHandler}
-          name="name"
-        />
-      )}
-
-      {/* {selectProduct !== null ? (
+      {editProduct.name !== "" ? (
         <>
-          <input type="text" value={selectProduct._id} disabled />
+          <input type="text" value={editProduct._id || ""} disabled />
           <input
             type="text"
-            value={
-              editProduct.name !== "" ? editProduct.name : selectProduct.name
-            }
+            value={editProduct.name || ""}
             name="name"
             onChange={(e) => editChangeHandler(e)}
           />
           <input
             type="text"
             name="price"
-            value={selectProduct.price}
+            value={editProduct.price || ""}
             onChange={(e) => editChangeHandler(e)}
           />
           <input
             type="text"
             name="description"
-            value={selectProduct.description}
+            value={editProduct.description || ""}
             onChange={(e) => editChangeHandler(e)}
           />
-          <p>{selectProduct.name}</p>
         </>
       ) : (
         <p>No Product</p>
-      )} */}
+      )}
     </div>
   );
 };

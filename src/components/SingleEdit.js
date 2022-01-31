@@ -13,7 +13,7 @@ const SingleEdit = ({ el, index }) => {
   };
   //EDIT PRODUCT FROM DB
   const editHandler = () => {
-    history.push(`/edit/${el._id}`);
+    history.push({ pathname: `/edit/${el._id}` }, el);
   };
   return (
     <tr>
