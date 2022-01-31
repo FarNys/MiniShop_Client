@@ -29,6 +29,9 @@
   width: 100%;
   padding: 1rem;
   > p {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     // flex: 1;
     padding-left: 5px;
     font-size: 0.95rem;
@@ -70,5 +73,21 @@
       margin-right: 5px;
       color: var(--color_2);
     }
+  }
+}
+.delete_add_to_cart {
+  text-align: center;
+  border: none;
+  color: var(--color_1);
+  outline: none;
+  font-size: 1rem;
+  background-color: var(--color_5);
+  cursor: pointer;
+  padding: 0.3rem;
+  &:hover {
+    @include bgColorHover(var(--color_5));
+  }
+  &:active {
+    @include bgColorActive(var(--color_5));
   }
 }

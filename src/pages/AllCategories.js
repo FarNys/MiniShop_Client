@@ -3,6 +3,8 @@ import { useParams } from "react-router";
 import { getAllProducts } from "../actions/ProductAction";
 import { useDispatch, useSelector } from "react-redux";
 import SingleProduct from "../components/SingleProduct";
+import "../styles/SingleProduct.scss";
+
 const AllCategories = () => {
   const dispatch = useDispatch();
   //GET ALL PRODUCTS FROM STORE

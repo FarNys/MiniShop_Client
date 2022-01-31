@@ -2,8 +2,10 @@ import React from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { deleteProduct } from "../actions/ProductAction";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router";
 const SingleEdit = ({ el, index }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
   //DELETE PRODUCT FROM DB
   const deleteHandler = () => {
     dispatch(deleteProduct(el._id));
@@ -11,7 +13,7 @@ const SingleEdit = ({ el, index }) => {
   };
   //EDIT PRODUCT FROM DB
   const editHandler = () => {
-    console.log(`Edit ID:${el._id}`);
+    history.push(`/edit/${el._id}`);
   };
   return (
     <tr>

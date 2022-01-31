@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./styles/App.scss";
 
 import Navbar from "./components/Navbar";
+import EditProductPage from "./pages/EditProductPage";
 export const baseURL = "http://localhost:5000";
 const SendData = React.lazy(() => import("./pages/SendData"));
 const DynamicProduct = React.lazy(() => import("./pages/DynamicProduct"));
@@ -48,6 +49,9 @@ const App = () => {
             </Route>
             <Route path="/products" exact>
               <AllProducts />
+            </Route>
+            <Route path="/edit/:id" exact>
+              <EditProductPage />
             </Route>
           </Switch>
         </Suspense>

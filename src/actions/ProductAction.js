@@ -67,3 +67,14 @@ export const getSingleProduct = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+//GET SINGLE PRODUCT FOR EDIT PAGE
+export const editAction = (id) => async (dispatch) => {
+  try {
+    const res = await fetch(`${baseURL}/products`);
+    const data = await res.json();
+    // console.log(data);
+    dispatch({ type: "PRODUCT_FOR_EDIT", payload: data, idLoad: id });
+  } catch (error) {
+    console.log(error);
+  }
+};

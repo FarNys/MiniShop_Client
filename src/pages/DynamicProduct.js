@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleProduct } from "../actions/ProductAction";
-import { BsFillPlusCircleFill } from "react-icons/bs";
+import { addTomyCart, getSingleProduct } from "../actions/ProductAction";
+import { BsFillCartPlusFill, BsFillPlusCircleFill } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 import { MdArrowForwardIos } from "react-icons/md";
@@ -12,7 +12,10 @@ const DynamicProduct = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const getProduct = useSelector((state) => state.singleProductReducer.product);
-  // console.log(getProduct);
+  console.log(getProduct);
+  const addToCart = () => {
+    dispatch(addTomyCart(getProduct));
+  };
   useEffect(() => {
     dispatch(getSingleProduct(id));
   }, [id, dispatch]);
@@ -59,6 +62,13 @@ const DynamicProduct = () => {
                       {getProduct.category.split("")[0].toUpperCase() +
                         getProduct.category.split("").slice(1).join("")}
                     </Link>
+                  </li>
+                  <li className="li_add_to_cart_container">
+                    {" "}
+                    <button data-name="btn" onClick={addToCart}>
+                      <span>Add To Cart</span>
+                      <BsFillCartPlusFill className="add_cart_product_icon" />
+                    </button>
                   </li>
                 </ul>
               </div>

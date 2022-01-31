@@ -1,0 +1,14 @@
+.edit_page_container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: turquoise;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  //   margin-top: 20px;
+  align-items: center;
+  > input {
+    padding: 10px;
+    margin-top: 20px;
+  }
+}

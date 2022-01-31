@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { counterHandler, deleteFromCart } from "../actions/CartAction";
 import { useDispatch, useSelector } from "react-redux";
-// import { AiFillCloseCircleconst } from "react-icons/ai";
+import { FaTrash } from "react-icons/fa";
+
 const SingleCart = ({ el, index }) => {
   const dispatch = useDispatch();
   const [counter, setcounter] = useState(1);
@@ -33,8 +34,12 @@ const SingleCart = ({ el, index }) => {
 
       <p>{el.item.price * counter}$</p>
       <p>
-        <button onClick={deleteCart} aria-label="Delete From Cart">
-          {/* <AiFillCloseCircleconst /> */}
+        <button
+          onClick={deleteCart}
+          aria-label="Delete From Cart"
+          className="delete_add_to_cart"
+        >
+          <FaTrash />
         </button>
       </p>
     </div>
