@@ -6,19 +6,15 @@ import { editAction } from "../actions/ProductAction";
 const EditProductPage = () => {
   const dispatch = useDispatch();
   const selectProduct = useSelector(
-    (state) => state.productReducer.productEditing
+    (state) => state.singleProductReducer.product
   );
-  const [editProduct, seteditProduct] = useState({
-    id: "",
-    name: "",
-    price: "",
-    description: "",
-  });
+  const [editProduct, seteditProduct] = useState({});
+
   const editChangeHandler = (e) => {
     seteditProduct({ ...editProduct, [e.target.name]: e.target.value });
-    console.log(editProduct);
   };
-  //   console.log(selectProduct);
+  console.log(editProduct);
+  console.log(selectProduct);
 
   const { id } = useParams();
   useEffect(() => {
@@ -27,7 +23,16 @@ const EditProductPage = () => {
   return (
     <div className="edit_page_container">
       <h1>Edit: {id}</h1>
-      {selectProduct !== null ? (
+      {selectProduct._id !== "" && (
+        <input
+          type="text"
+          value={editProduct.name}
+          onChange={editChangeHandler}
+          name="name"
+        />
+      )}
+
+      {/* {selectProduct !== null ? (
         <>
           <input type="text" value={selectProduct._id} disabled />
           <input
@@ -54,7 +59,7 @@ const EditProductPage = () => {
         </>
       ) : (
         <p>No Product</p>
-      )}
+      )} */}
     </div>
   );
 };

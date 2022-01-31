@@ -16,14 +16,7 @@ const productReducer = (state = initialState, action) => {
         ...state,
         products: [...state.products.filter((el) => el._id !== action.payload)],
       };
-    case "PRODUCT_FOR_EDIT":
-      return {
-        products: action.payload,
-        length: action.payload.length,
-        productEditing: action.payload.filter(
-          (el) => el._id === action.idLoad
-        )[0],
-      };
+
     default:
       return state;
   }

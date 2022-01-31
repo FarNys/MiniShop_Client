@@ -70,10 +70,11 @@ export const getSingleProduct = (id) => async (dispatch) => {
 //GET SINGLE PRODUCT FOR EDIT PAGE
 export const editAction = (id) => async (dispatch) => {
   try {
-    const res = await fetch(`${baseURL}/products`);
+    dispatch({ type: "PRODUCT_EDIT_DELETE" });
+    const res = await fetch(`${baseURL}/products/edit/${id}`);
     const data = await res.json();
-    // console.log(data);
-    dispatch({ type: "PRODUCT_FOR_EDIT", payload: data, idLoad: id });
+    console.log(data);
+    dispatch({ type: "PRODUCT_FOR_EDIT", payload: data });
   } catch (error) {
     console.log(error);
   }
