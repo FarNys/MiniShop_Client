@@ -67,6 +67,9 @@ export const getSingleProduct = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+export const sortProducts = (state, sortName) => {
+  return { type: "SORT_PRODUCTS", payload: state, sortName };
+};
 //GET SINGLE PRODUCT FOR EDIT PAGE
 // export const editAction = (id) => async (dispatch) => {
 //   try {

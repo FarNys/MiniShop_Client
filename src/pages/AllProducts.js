@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllProducts } from "../actions/ProductAction";
+import { getAllProducts, sortProducts } from "../actions/ProductAction";
 import { useDispatch, useSelector } from "react-redux";
 import SingleEdit from "../components/SingleEdit";
 import "../styles/AllProducts.scss";
@@ -17,6 +17,7 @@ import Select from "@mui/material/Select";
 //IMPORT FROM MUI TO BUILD DROPDOWN
 
 const AllProducts = () => {
+  const [test, settest] = useState(false);
   const [category, setcategory] = useState("all");
   //INDEX NUMBER FOR SHOW
   const [index, setindex] = useState(0);
@@ -61,6 +62,14 @@ const AllProducts = () => {
   if (allProducts.length === 0) {
     return <div>Loading . . .</div>;
   }
+  //SORT HANDLER FUNCTION
+  const sortHandler = () => {
+    console.log("Sort");
+    dispatch(sortProducts(test, "price"));
+    settest(!test);
+    console.log(allProducts);
+  };
+
   return (
     <div className="allproducts_container">
       <div className="select_category_container">
@@ -96,7 +105,7 @@ const AllProducts = () => {
       <table className="table_table">
         <thead className="table_thead_row">
           <tr className="table_header_row">
-            <th>#</th>
+            <th onClick={sortHandler}>#</th>
             <th>Name</th>
             <th>Category</th>
             <th>Price</th>

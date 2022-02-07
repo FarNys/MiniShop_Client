@@ -16,7 +16,33 @@ const productReducer = (state = initialState, action) => {
         ...state,
         products: [...state.products.filter((el) => el._id !== action.payload)],
       };
-
+    case "SORT_PRODUCTS":
+      return {
+        ...state,
+        products: [
+          ...state.products.sort((a, b) => {
+            const x = a[action.sortName];
+            const y = b[action.sortName];
+            if (action.payload) {
+              if (x > y) {
+                return -1;
+              }
+              if (x < y) {
+                return +1;
+              }
+              return 0;
+            } else {
+              if (x > y) {
+                return +1;
+              }
+              if (x < y) {
+                return -1;
+              }
+              return 0;
+            }
+          }),
+        ],
+      };
     default:
       return state;
   }
